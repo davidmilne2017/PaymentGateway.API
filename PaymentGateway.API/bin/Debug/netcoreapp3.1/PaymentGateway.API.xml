@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaymentGateway.API</name>
+    </assembly>
+    <members>
+        <member name="M:PaymentGateway.API.Controllers.CreatePaymentController.CreatePayment(PaymentGateway.Common.Dtos.CreatePaymentRequestDto)">
+            <summary>
+            Creates Payment Record with Bank Accquirer
+            </summary>
+            <returns>Create Payment Response</returns>
+            <response code="200"></response>
+            <response code="400">Returns a bad request error</response>
+            <response code="500">Returns an internal server error</response>
+        </member>
+        <member name="M:PaymentGateway.API.Controllers.RetrievePaymentController.RetrievePaymentDetails(PaymentGateway.Common.Dtos.PaymentDetailsRequestDto)">
+            <summary>
+            Gets payment details by Transaction Id
+            </summary>
+            <param name="paymentDetailsRequestDto"></param>
+            <returns>A list of Notifications for a userId</returns>
+            <response code="200"></response>
+            <response code="400">Returns a bad request error</response>
+            <response code="404">Returns a not found error</response>
+            <response code="500">Returns a not found error</response>
+        </member>
+        <member name="T:PaymentGateway.API.Resources.ErrorMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.BodyMissing">
+            <summary>
+              Looks up a localized string similar to No Information was found in the request.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.CouldNotCreatePayment">
+            <summary>
+              Looks up a localized string similar to Unable to create payment.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.CouldNotRetrievePaymentDetails">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve payment details.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.NoTransactionId">
+            <summary>
+              Looks up a localized string similar to A non empty transactionId must be specified.
+            </summary>
+        </member>
+        <member name="P:PaymentGateway.API.Resources.ErrorMessages.TransactionIdNotFound">
+            <summary>
+              Looks up a localized string similar to No payment for transactionId {0} could be found.
+            </summary>
+        </member>
+    </members>
+</doc>

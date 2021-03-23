@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "xbKWS8dm9a4S2Zkn4E7ejYwLyLQoUG4KuFzrwbyc/mZ0Us7P/tA/MXF0Nn0dw5myGn3suBK3J0r3zwUP2C/vFQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\david\\source\\repos\\PaymentGateway.API\\PaymentGateway.Services\\PaymentGateway.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\prometheus-net\\4.1.1\\prometheus-net.4.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

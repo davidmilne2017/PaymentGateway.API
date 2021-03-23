@@ -1,0 +1,11 @@
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\bin\Debug\netcoreapp3.1\PaymentGateway.Common.deps.json
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\bin\Debug\netcoreapp3.1\PaymentGateway.Common.dll
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\bin\Debug\netcoreapp3.1\PaymentGateway.Common.pdb
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.AssemblyInfoInputs.cache
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.AssemblyInfo.cs
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.csproj.CoreCompileInputs.cache
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.dll
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.pdb
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.csprojAssemblyReference.cache
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.Resources.LoggerErrorMessages.resources
+C:\Users\david\source\repos\PaymentGateway.API\PaymentGateway.Common\obj\Debug\netcoreapp3.1\PaymentGateway.Common.csproj.GenerateResource.cache
