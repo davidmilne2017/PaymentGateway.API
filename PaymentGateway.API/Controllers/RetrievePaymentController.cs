@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.API.Errors;
 using PaymentGateway.API.Resources;
+using PaymentGateway.Common.Domain;
 using PaymentGateway.Common.Dtos;
 using PaymentGateway.Common.ErrorEnums;
 using PaymentGateway.Common.Interfaces;
@@ -33,6 +34,7 @@ namespace PaymentGateway.API.Controllers
         /// <summary>
         /// Gets payment details by Transaction Id
         /// </summary>
+        /// <param name="debugExpectedStatus"></param>
         /// <param name="paymentDetailsRequestDto"></param>
         /// <returns>A list of Notifications for a userId</returns>
         /// <response code="200"></response>
@@ -44,7 +46,8 @@ namespace PaymentGateway.API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<PaymentDetailsResponseDto>> RetrievePaymentDetails(PaymentDetailsRequestDto paymentDetailsRequestDto)
+        public async Task<ActionResult<PaymentDetailsResponseDto>> RetrievePaymentDetails([FromHeader(Name = "DebugExpectedStatus")] PaymentStatusCode debugExpectedStatus, 
+                PaymentDetailsRequestDto paymentDetailsRequestDto)
         {
 
             PaymentGatewayMetrics.RequestCounter.WithLabels(RequestType.RETRIEVEDETAILS.Label());
@@ -62,14 +65,7 @@ namespace PaymentGateway.API.Controllers
             }                
 
             var paymentDetailsRequest = paymentDetailsRequestDto.MapPaymentDetailsRequestDtoToPaymentDetailsRequest();
-
-            var headers = HttpContext.Request.Headers;
-            if (headers.ContainsKey("DebugExpectedStatus"))
-            {
-                var debugExpectedStatus = headers["DebugExpectedStatus"];
-                if (!string.IsNullOrEmpty(debugExpectedStatus)) 
-                    paymentDetailsRequest.SetDebugExpectedStatus(debugExpectedStatus);
-            }
+            paymentDetailsRequest.DebugExpectedStatusCode = debugExpectedStatus;
 
             var paymentDetails = await paymentService.RetrievePaymentDetailsAsync(paymentDetailsRequest).ConfigureAwait(false);
 

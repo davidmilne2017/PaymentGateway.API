@@ -20,6 +20,7 @@ namespace PaymentGateway.API.Tests.Controllers
     {
 
         private readonly Fixture fixture;
+        private readonly PaymentStatusCode debugExpectedStatus = PaymentStatusCode.Success;
 
         public RetrievePaymentControllerTests()
         {
@@ -36,7 +37,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.BadRequest().AddErrorMessage("body", ErrorMessages.BodyMissing).Build();
 
             //Act
-            var response = await sut.RetrievePaymentDetails(null);
+            var response = await sut.RetrievePaymentDetails(debugExpectedStatus, null);
 
             //Assert
             var result = response.Result.Should().BeOfType<BadRequestObjectResult>().Subject;
@@ -60,7 +61,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.BadRequest().AddErrorMessage("body", ErrorMessages.NoTransactionId).Build();
 
             //Act
-            var response = await sut.RetrievePaymentDetails(create);
+            var response = await sut.RetrievePaymentDetails(debugExpectedStatus, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<BadRequestObjectResult>().Subject;
@@ -84,7 +85,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.InternalServerError().AddErrorMessage("payment", ErrorMessages.CouldNotRetrievePaymentDetails).Build();
 
             //Act
-            var response = await sut.RetrievePaymentDetails(create);
+            var response = await sut.RetrievePaymentDetails(debugExpectedStatus, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<ObjectResult>().Subject;
@@ -110,7 +111,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.InternalServerError().AddErrorMessage("transactionId", ErrorMessages.TransactionIdNotFound, create.TransactionId).Build();
 
             //Act
-            var response = await sut.RetrievePaymentDetails(create);
+            var response = await sut.RetrievePaymentDetails(debugExpectedStatus, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<NotFoundObjectResult>().Subject;
@@ -135,7 +136,7 @@ namespace PaymentGateway.API.Tests.Controllers
             paymentServiceMock.Setup(x => x.RetrievePaymentDetailsAsync(It.IsAny<PaymentDetailsRequest>())).ReturnsAsync(paymentResponse);
 
             //Act
-            var response = await sut.RetrievePaymentDetails(create);
+            var response = await sut.RetrievePaymentDetails(debugExpectedStatus, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<OkObjectResult>().Subject;

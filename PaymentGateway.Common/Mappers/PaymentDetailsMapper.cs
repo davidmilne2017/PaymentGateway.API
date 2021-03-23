@@ -14,18 +14,6 @@ namespace PaymentGateway.Common.Mappers
             };
         }
 
-        public static void SetDebugExpectedStatus(this PaymentDetailsRequest paymentDetailsRequest, string debugExpectedStatus)
-        {
-            if (Enum.TryParse(typeof(PaymentStatusCode), debugExpectedStatus, true, out var statusCode))
-            {
-                paymentDetailsRequest.DebugExpectedStatusCode = (PaymentStatusCode)statusCode;
-            }
-            else
-            {
-                paymentDetailsRequest.DebugExpectedStatusCode = PaymentStatusCode.NotSet;
-            }
-        }
-
         public static PaymentDetailsResponseDto MapPaymentDetailsResponseToPaymentDetailsResponseDto(this PaymentDetailsResponse paymentDetailsResponse)
         {
             return new PaymentDetailsResponseDto()

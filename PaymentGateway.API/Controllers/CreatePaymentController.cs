@@ -33,6 +33,8 @@ namespace PaymentGateway.API.Controllers
         /// <summary>
         /// Creates Payment Record with Bank Accquirer
         /// </summary>
+        /// <param name="debugExpectedSuccess"></param>
+        /// <param name="createPaymentRequestDto"></param>
         /// <returns>Create Payment Response</returns>
         /// <response code="200"></response>
         /// <response code="400">Returns a bad request error</response>
@@ -41,7 +43,7 @@ namespace PaymentGateway.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CreatePaymentResponseDto>> CreatePayment(CreatePaymentRequestDto createPaymentRequestDto)
+        public async Task<ActionResult<CreatePaymentResponseDto>> CreatePayment([FromHeader(Name = "DebugExpectedSuccess")] bool debugExpectedSuccess, CreatePaymentRequestDto createPaymentRequestDto)
         {
             PaymentGatewayMetrics.RequestCounter.WithLabels(RequestType.CREATEPAYMENT.Label());
 
@@ -52,11 +54,7 @@ namespace PaymentGateway.API.Controllers
             }           
 
             var createPaymentRequest = createPaymentRequestDto.MapPaymentRequestDtoToPaymentRequest();
-
-            var headers = HttpContext.Request.Headers;
-            if (headers.ContainsKey("DebugExpectedSuccess") && bool.TryParse(headers["DebugExpectedSuccess"], out var debugExpectedSuccess))
-               createPaymentRequest.DebugExpectSuccess = debugExpectedSuccess;
-            
+            createPaymentRequest.DebugExpectSuccess = debugExpectedSuccess;            
 
             var validationErrors = paymentService.ValidateCreatePaymentRequest(createPaymentRequest);
             if (validationErrors.Length > 0)

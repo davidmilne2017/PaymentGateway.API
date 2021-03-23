@@ -4,19 +4,22 @@
         <name>PaymentGateway.API</name>
     </assembly>
     <members>
-        <member name="M:PaymentGateway.API.Controllers.CreatePaymentController.CreatePayment(PaymentGateway.Common.Dtos.CreatePaymentRequestDto)">
+        <member name="M:PaymentGateway.API.Controllers.CreatePaymentController.CreatePayment(System.Boolean,PaymentGateway.Common.Dtos.CreatePaymentRequestDto)">
             <summary>
             Creates Payment Record with Bank Accquirer
             </summary>
+            <param name="debugExpectedSuccess"></param>
+            <param name="createPaymentRequestDto"></param>
             <returns>Create Payment Response</returns>
             <response code="200"></response>
             <response code="400">Returns a bad request error</response>
             <response code="500">Returns an internal server error</response>
         </member>
-        <member name="M:PaymentGateway.API.Controllers.RetrievePaymentController.RetrievePaymentDetails(PaymentGateway.Common.Dtos.PaymentDetailsRequestDto)">
+        <member name="M:PaymentGateway.API.Controllers.RetrievePaymentController.RetrievePaymentDetails(PaymentGateway.Common.Domain.PaymentStatusCode,PaymentGateway.Common.Dtos.PaymentDetailsRequestDto)">
             <summary>
             Gets payment details by Transaction Id
             </summary>
+            <param name="debugExpectedStatus"></param>
             <param name="paymentDetailsRequestDto"></param>
             <returns>A list of Notifications for a userId</returns>
             <response code="200"></response>

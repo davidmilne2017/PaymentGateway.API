@@ -35,7 +35,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.BadRequest().AddErrorMessage("body", ErrorMessages.BodyMissing).Build();
 
             //Act
-            var response = await sut.CreatePayment(null);
+            var response = await sut.CreatePayment(true, null);
 
             //Assert
             var result = response.Result.Should().BeOfType<BadRequestObjectResult>().Subject;
@@ -60,7 +60,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.BadRequest().AddErrorMessage("body", validationError).Build();
             
             //Act
-            var response = await sut.CreatePayment(create);
+            var response = await sut.CreatePayment(true, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<BadRequestObjectResult>().Subject;
@@ -85,7 +85,7 @@ namespace PaymentGateway.API.Tests.Controllers
             var error = ErrorMessageBuilder.InternalServerError().AddErrorMessage("payment", ErrorMessages.CouldNotCreatePayment).Build();
 
             //Act
-            var response = await sut.CreatePayment(create);
+            var response = await sut.CreatePayment(true, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<ObjectResult>().Subject;
@@ -110,7 +110,7 @@ namespace PaymentGateway.API.Tests.Controllers
             paymentServiceMock.Setup(x => x.CreatePaymentAsync(It.IsAny<CreatePaymentRequest>())).ReturnsAsync(createResponse);
             
             //Act
-            var response = await sut.CreatePayment(create);
+            var response = await sut.CreatePayment(true, create);
 
             //Assert
             var result = response.Result.Should().BeOfType<OkObjectResult>().Subject;

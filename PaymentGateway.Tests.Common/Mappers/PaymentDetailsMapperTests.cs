@@ -49,24 +49,5 @@ namespace PaymentGateway.Common.Tests.Mappers
             result.CurrencyCode.Should().Be(response.CurrencyCode);
             result.StatusCode.Should().Be(response.StatusCode.ToString());
         }
-
-        [Theory]
-        [InlineData("NotSet", PaymentStatusCode.NotSet)]
-        [InlineData("Success", PaymentStatusCode.Success)]
-        [InlineData("Failure", PaymentStatusCode.Failure)]
-        [InlineData("TransactionIdNotRecognised", PaymentStatusCode.TransactionIdNotRecognised)]
-        [InlineData("InvalidEnum", PaymentStatusCode.NotSet)]
-        [InlineData("", PaymentStatusCode.NotSet)]
-        public void SetDebugExpectedStatus_SetsCorrectValue(string debugExpectedStatus, PaymentStatusCode debugActualStatus)
-        {
-            //Arrange
-            var sut = new PaymentDetailsRequest();
-
-            //Act
-            sut.SetDebugExpectedStatus(debugExpectedStatus);
-
-            //Assert
-            sut.DebugExpectedStatusCode.Should().Be(debugActualStatus);
-        }
     }
 }
